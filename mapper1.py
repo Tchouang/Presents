@@ -3,28 +3,11 @@
 
 import sys
 import csv
+import pandas as pd
 
-def process_line(line, commandes, key_line, seen_keys):
-    # Partie de traitement des lignes
 
-    # Vérifier si la clé de la commande a déjà été vue
-    if key_line not in seen_keys:
-        # Ajouter la clé à l'ensemble des clés vues
-        seen_keys.add(key_line)
-        
-        # Ajouter la commande au dictionnaire de commandes
-        commandes[key_line] = {
-            "postal_code": cpcli,
-            "command_date_time": datcde,
-            "command_code": codcde,
-            "franking_price": timbrecde,
-            "packages_number": Nbcolis,
-            "quantities": qte,
-            "command_points": points_commande
-        }
-
-# Créer un ensemble pour stocker les clés des commandes déjà rencontrées
-seen_keys = set()
+dict = {4: "postal_code", 6: "command_code", 7: "command_date_time", 9: "franking_price", 10: "packages_number", 15: "quantities", 20: "points"}
+print(pd.DataFrame(list(dict.items()), columns=["Code", "Items"]))
 
 # Créer un dictionnaire pour stocker les commandes sélectionnées
 commandes = {}
@@ -48,9 +31,7 @@ for row in csv_reader:
         row[20],
     )
 
-    # Convertir les données si nécessaire (comme indiqué dans votre code original)
-
-    # Créer la clé de la ligne
+    
     key_line = (cpcli, codcde, datcde, timbrecde, Nbcolis, qte, points)
 
     # Traiter la ligne
