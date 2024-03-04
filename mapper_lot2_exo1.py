@@ -22,7 +22,11 @@ for row in csv_reader:
         row[15],
         row[20],
     )
-    print('%s;%s;%s;%s;%s;%s;%s' %(cpcli, codcde, datcde, timbrecde, Nbcolis, qte, points))
+    if datcde=="NULL":
+        pass
+    else:
+        if 2010<=int(datcde[0:4])<=2020 and int(cpcli[0:2]) in [53,61,28,50]:
+            print('%s;%s;%s;%s;%s;%s;%s' %(cpcli, codcde, datcde, timbrecde, Nbcolis, qte, points))
     '''
     Code à réaliser avec le print à la fin de votre traitement de votre boucle
     '''
