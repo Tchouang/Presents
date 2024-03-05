@@ -93,7 +93,6 @@ plt.figure(figsize=(8, 8))
 plt.pie([percent28,percent50,percent53,percent61], labels=dfcdcp, autopct='%1.1f%%', startangle=140)
 plt.title("Pourcentage de commandes par département")
 
-plt.savefig(pdf_file)
 
 # Enregistrer le graphe au format PDF
 output_pdf_file = 'resultat.pdf'
