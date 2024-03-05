@@ -32,12 +32,6 @@ def process_line(line, commandes,key_line):
         points_commande = 0
     else:
         points_commande = int(parts[6])
-    #Dictionnary of selected commands
-    if 2010<=dummy_datcde<=2020 and dummy_cpcli in [53,28,61,50]:
-        commandes.update({key_line:{"postal_code":cpcli, "command_date_time":datcde, "command_code":codcde, "franking_price":timbrecde, "packages_number":Nbcolis,"quantities":qte, "command_points":points_commande}})
-        
-    else:
-        pass
 
 # Dictionnaire
 commandes = {}
