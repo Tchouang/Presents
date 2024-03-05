@@ -20,9 +20,9 @@ def process_line(line, commandes):
         }
     else:
         # Si le code de commande existe déjà, mettre à jour les informations d'agrégation
-        commandes[codcde]["Nbcolis"] += int(Nbcolis)
-        commandes[codcde]["qte"] += int(qte)
-        commandes[codcde]["points"] += int(points)
+        commandes[codcde]["Nbcolis"] += (Nbcolis)
+        commandes[codcde]["qte"] += (qte)
+        commandes[codcde]["points"] += (points)
 
 
 # Dictionnaire
@@ -69,6 +69,6 @@ df = pd.DataFrame(
     ]
 )
 
- #Enregistrez le DataFrame dans un fichier Excel
- excel_file = "/datavolume1/lot2_exo1.xlsx"
- df.to_excel(excel_file, index=False)
+#  #Enregistrez le DataFrame dans un fichier Excel
+#  excel_file = "/datavolume1/lot2_exo1.xlsx"
+#  df.to_excel(excel_file, index=False)
