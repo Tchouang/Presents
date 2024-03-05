@@ -4,7 +4,8 @@
 import sys
 import decimal
 import pandas as pd
-
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 
 # Fonction pour traiter une ligne de données et mettre à jour le dictionnaire mydata
 def process_line(line, commandes):
@@ -19,7 +20,8 @@ def process_line(line, commandes):
         commandes[codcde] = {
             "datcde": datcde,
             "codcde" : codcde,
-            "cpcli": cpcli,
+            #à modifier si nécessaire pour questions suivantes
+            "cpcli": cpcli[0:2],
             "timbrecde": timbrecde,
             "Nbcolis": Nbcolis,
             "qte": qte,
@@ -74,8 +76,32 @@ df = pd.DataFrame(
         "points", 
     ]
 )
-print(df)
 
-#  #Enregistrez le DataFrame dans un fichier Excel
-#  excel_file = "/datavolume1/lot2_exo1.xlsx"
-#  df.to_excel(excel_file, index=False)
+#Comptage du nombre de ligne du dataframe
+n_line=len(df)
+print()
+#Création du dictionnnaire pour les pourcentages par département
+dfcdcp=df.groupby(['cpcli']).size()
+percent28= dfcdcp.iloc[0]/n_line
+percent50= dfcdcp.iloc[1]/n_line
+percent53= dfcdcp.iloc[2]/n_line
+percent61= dfcdcp.iloc[3]/n_line
+print(percent28+percent50+percent61+percent53+percent61)
+
+#Création du graphique par secteur
+plt.figure(figsize=(8, 8))
+plt.pie([percent28,percent50,percent53,percent61], labels=dfcdcp, autopct='%1.1f%%', startangle=140)
+plt.title("Pourcentage de commandes par département")
+
+plt.savefig(pdf_file)
+
+# Enregistrer le graphe au format PDF
+output_pdf_file = 'resultat.pdf'
+with PdfPages(output_pdf_file) as pdf:
+    pdf.savefig()  # Sauvegarder le graphe dans le fichier PDF
+ 
+print("Le graphique a été enregistré au format PDF dans le fichier %s" % output_pdf_file)
+
+#Enregistrez le DataFrame dans un fichier Excel
+#excel_file = "test.xlsx"
+#df.to_excel(excel_file, index=False)
