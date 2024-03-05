@@ -1,0 +1,21 @@
+{
+              "version": "2.0.0",
+              "tasks": [
+                  {
+                      "label": "Run Mapper",
+                      "type": "shell",
+                      "command": ".\mapper_lot2_exo1.py"
+                  },
+                  {
+                      "label": "Run Reducer",
+                      "type": "shell",
+                      "command": ".\reducer_lot2_exo1_test.py"
+                  },
+                  {
+                      "label": "Run Analysis",
+                      "type": "shell",
+                      "command": ".\analyse.py"
+                  }
+              ]
+          }
+          
