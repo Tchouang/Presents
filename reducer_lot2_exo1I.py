@@ -50,7 +50,6 @@ for codcde, value in sorted_commande[:100]:
             value["timbrecde"],
             value["Nbcolis"],
             value["qte"],
-            value["cpcli"],
             value["points"],
         ]
     )
@@ -68,6 +67,7 @@ df = pd.DataFrame(
         "points", 
     ]
 )
+print(df)
 
 #  #Enregistrez le DataFrame dans un fichier Excel
 #  excel_file = "/datavolume1/lot2_exo1.xlsx"
