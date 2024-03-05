@@ -69,6 +69,6 @@ df = pd.DataFrame(
     ]
 )
 
- #Enregistrez le DataFrame dans un fichier Excel
- excel_file = "/datavolume1/lot2_exo1.xlsx"
- df.to_excel(excel_file, index=False)
+#Enregistrez le DataFrame dans un fichier Excel
+excel_file = "/datavolume1/lot2_exo1.xlsx"
+df.to_excel(excel_file, index=False)
