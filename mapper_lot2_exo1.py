@@ -23,9 +23,7 @@ for row in csv_reader:
         row[20],
     )
     if datcde=="NULL":
-        print('%s;%s;%s;%s;%s;%s;%s' %(cpcli, codcde, 0, timbrecde, Nbcolis, qte, points))
-    elif points=="NULL":
-        print('%s;%s;%s;%s;%s;%s;%s' %(cpcli, codcde, datcde, timbrecde, Nbcolis, qte, 0))
+        pass
     else:
         if 2010<=int(datcde[0:4])<=2020 and int(cpcli[0:2]) in [53,61,28,50]:
             print('%s;%s;%s;%s;%s;%s;%s' %(cpcli, codcde, datcde, timbrecde, Nbcolis, qte, points))
