@@ -9,14 +9,21 @@ import pandas as pd
 # Fonction pour traiter une ligne de données et mettre à jour le dictionnaire mydata
 def process_line(line, commandes):
     cpcli, datcde, codcde, timbrecde, Nbcolis, qte, points = line.strip().split(";")
+    if Nbcolis == "NULL": Nbcolis=0
+    else: Nbcolis=int(Nbcolis)  
+    if qte == "NULL": qte=0
+    else: qte=int(qte)         
+    if points =="NULL": points=0 
+    else:points=int(points)   
     if codcde not in commandes:
         commandes[codcde] = {
-            "cpcli": cpcli,
             "datcde": datcde,
+            "codcde" : codcde,
+            "cpcli": cpcli,
             "timbrecde": timbrecde,
             "Nbcolis": Nbcolis,
             "qte": qte,
-            "points": points
+            "points": points,
         }
     else:
         # Si le code de commande existe déjà, mettre à jour les informations d'agrégation
@@ -41,12 +48,12 @@ sorted_commande = sorted (
 #Création Dataframe
 
 mydata = []
-for codcde, value in sorted_commande[:100]:
+for codcde, value in sorted_commande:
     mydata.append(
         [
             codcde,
-            value["cpcli"],
             value["datcde"],
+            value["cpcli"],
             value["timbrecde"],
             value["Nbcolis"],
             value["qte"],
@@ -58,9 +65,9 @@ for codcde, value in sorted_commande[:100]:
 df = pd.DataFrame(
     mydata,
     columns=[
-        "cpcli",
         "datcde",
         "codcde",
+        "cpcli",
         "timbrecde",
         "Nbcolis",
         "qte",
