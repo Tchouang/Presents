@@ -59,6 +59,8 @@ for key_line, values in sorted_commandes:
 # # Donner à mettre dans le dataframe : mydata
 df = pd.DataFrame(mydata)
 
+print(df)
+
 # # Enregistrez le DataFrame dans un fichier Excel
 # #excel_file = "/datavolume1/lot2_exo1.xlsx"
 excel_file = "lot2_exo1.xlsx"
