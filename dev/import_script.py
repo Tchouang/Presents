@@ -42,8 +42,36 @@ def import_csv_to_hbase(csv_file):
                     if key != 'datcde' and (value.strip() == '' or value.strip().lower() == 'null'):
                         row[key] = '0' if key.isdigit() else '0'
                 print('avant le put')
-                table.put(row_key, row)
-                # table.put(row['row_key'], row)
+                table.put(str(row_key).encode(), {
+                    b'cf:codcli': str(row['codcli']).encode(),
+                    b'cf:genrecli': str(row['genrecli']).encode(),
+                    b'nomcli': str(row['nomcli']).encode(),
+                    b'cf:prenomcli': str(row['prenomcli']).encode(),
+                    b'cpcli': str(row['cpcli']).encode(),
+                    b'villecli': str(row['villecli']).encode(),
+                    b'nomcli': str(row['nomcli']).encode(),
+                    b'codcde': str(row['codcde']).encode(),
+                    b'datcde': str(row['datcde']).encode(),
+                    b'timbrecli': str(row['timbrecli']).encode(),
+                    b'timbrecde': str(row['timbrecde']).encode(),
+                    b'Nbcolis': str(row['Nbcolis']).encode(),
+                    b'cheqcli': str(row['cheqcli']).encode(),
+                    b'barchive': str(row['barchive']).encode(),
+                    b'bstock': str(row['bstock']).encode(),
+                    b'codobj': str(row['codobj']).encode(),
+                    b'qte': str(row['qte']).encode(),
+                    b'Colis': str(row['Colis']).encode(),
+                    b'libobj': str(row['libobj']).encode(),
+                    b'Tailleobj': str(row['Tailleobj']).encode(),
+                    b'Poidsobj': str(row['Poidsobj']).encode(),
+                    b'points': str(row['points']).encode(),
+                    b'indispobj': str(row['indispobj']).encode(),
+                    b'libcondit': str(row['libcondit']).encode(),
+                    b'prixcond': str(row['prixcond']).encode(),
+                    b'puobj': str(row['puobj']).encode(),
+                })
+                
+                
     except Exception as e:
         logging.error("Erreur lors de l'importation des données: %s", str(e))
 
@@ -53,7 +81,7 @@ if connection is not None:
 else:
     logging.error("Erreur: La connexion à HBase n'est pas établie")
 
-import_csv_to_hbase('dataw_fro03.csv')
+import_csv_to_hbase('dataw_fro03_mini_100.csv')
 
 # Après l'importation des données
 if connection is not None:
