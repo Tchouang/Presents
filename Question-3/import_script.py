@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 connection = happybase.Connection('node176250-env-1839015-etudiant37.sh1.hidora.com', 11775) #VM 37 à changer par user
 connection.open()
-table_name = 'maTable'  #à changer si besoin
+table_name = 'fromagerie'  #à changer si besoin
 table = connection.table(table_name)
 
 # Fonction pour vérifier si une chaîne peut être convertie en date valide
